@@ -1,6 +1,7 @@
--- A cláusula LIMIT informa quantos registros devem retornar na consulta.
--- Opcionalmente, pode incluir a clásula OFFSET para informar quantos registros devem ser pulados antes dos que serão exibidos.
--- Exemplo: LIMIT 5 OFFSET 3 significa que devem ser exibidos 5 registros, pulando os 3 primeiros. 
+/* A cláusula LIMIT informa quantos registros devem retornar na consulta.
+   Opcionalmente, pode incluir a clásula OFFSET para informar quantos registros devem ser pulados antes dos que serão exibidos.
+   Exemplo: LIMIT 5 OFFSET 3 significa que devem ser exibidos 5 registros, pulando os 3 primeiros.
+*/ 
 
 -- Retorna as 10 músicas mais longas.
 select name, composer, milliseconds

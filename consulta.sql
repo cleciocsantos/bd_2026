@@ -1,4 +1,6 @@
--- Seguem abaixo exemplos de consultas no banco de dados chinook.db com a descrição do que as consultas retornam.
+/* 
+  Seguem abaixo exemplos de consultas no banco de dados chinook.db com a descrição do que as consultas retornam.
+*/
 
 -- Retorna a tabela de álbuns inteira, com todas as suas colunas.
 select *
