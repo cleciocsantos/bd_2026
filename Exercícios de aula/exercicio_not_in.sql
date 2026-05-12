@@ -1,5 +1,5 @@
 /*
-    Exercício: Liste todos os clientes que não de São Paulo e nem do Rio de Janeiro (cidades). 
+    Exercício: Liste todos os clientes que não são de São Paulo e nem do Rio de Janeiro (cidades). 
     Mostre nome, cidade e estado.
 */
 
