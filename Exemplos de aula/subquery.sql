@@ -28,3 +28,12 @@ WHERE AlbumId in (
     WHERE artistId = 12
 );
 
+-- Exemplo: Listar todas as músicas do álbum 'Da Lama Ao Caos'
+SELECT name, AlbumId
+from tracks
+WHERE AlbumId in (
+    SELECT AlbumId
+    FROM albums
+    WHERE title = 'Da Lama Ao Caos'
+);
+
