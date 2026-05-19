@@ -1,4 +1,4 @@
-/* Abaixo segue um passo a passo até chegar numa subconsulta */
+/* Abaixo segue um passo a passo até chegar numa subconsulta que lista todas as músicas dos álbuns do artida de id 12 */
 
 -- Retornando todos os artistas e observando seus ids
 SELECT *
@@ -28,7 +28,7 @@ WHERE AlbumId in (
     WHERE artistId = 12
 );
 
--- Exemplo: Listar todas as músicas do álbum 'Da Lama Ao Caos'
+-- Novo exemplo: Listar todas as músicas do álbum 'Da Lama Ao Caos'
 SELECT name, AlbumId
 from tracks
 WHERE AlbumId in (
