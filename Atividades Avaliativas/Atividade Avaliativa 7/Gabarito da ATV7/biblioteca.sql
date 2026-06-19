@@ -31,4 +31,4 @@ SELECT autor.nome as Autor,
        COUNT(livro.livroId) AS 'Quantidade de Livros'
 FROM autor
 LEFT JOIN livro ON autor.autorId = livro.autorId
-GROUP BY autor.nome;
+GROUP BY autor.autorId;
