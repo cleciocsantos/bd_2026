@@ -13,21 +13,26 @@ CREATE TABLE Aluno (
     id_turma INTEGER NOT NULL,
     /* A linha abaixo indica que a coluna id_turma desta tabela é uma 
        chave estrangeira para a coluna id_turma da tabela Turma */
-    FOREIGN KEY (id_turma) REFERENCES Turma(id_turma)
+    FOREIGN KEY (id_turma) REFERENCES Turma(id_turma) 
+    ON DELETE CASCADE -- Essa linha define que ao excluir uma turma, todos os alunos dela serão excluídos.
+    /* Outras opções:
+    ON DELETE SET NULL -- Indica que ao excluir uma turma, todos os alunos dela ficam sem turma.
+    ON DELETE NO ACTION -- Indica que uma turma com alunos não poderá ser excluída.
+    */
 );
 
 DROP TABLE IF EXISTS Turma;
 CREATE TABLE Turma (
     id_turma INTEGER PRIMARY KEY AUTOINCREMENT,
     sigla TEXT NOT NULL,
-    curso TEXT NOT NULL,
+    curso TEXT CHECK(curso IN ('integrado', 'regular')), -- a restrição CHECK é usada aqui para limitar quais cursos que podem ser cadastrados.
     serie INTEGER NOT NULL
 );
 
 /* O comando INSERT INTO pode ser usado para inserir uma ou mais linhas de uma só vez na tabela */
 INSERT INTO Turma (sigla, curso, serie)
-VALUES ('DS202', 'Desenvolvimento de Sistemas', 2),
-('AD202', 'Administração', 2);
+VALUES ('DS202', 'integrado', 2),
+('1301', 'regular', 3);
 
 /* Ao inserir um aluno, precisamos informar um id_turma que exista na tabela Turma */
 INSERT INTO Aluno (nome, telefone, cpf, id_turma)
@@ -48,6 +53,15 @@ WHERE id_aluno = 3; -- a clásula WHERE indica em quais linhas o valor das colun
 /* O comando DELETE pode ser usado para excluir uma ou mais linhas de uma só vez na tabela */
 DELETE FROM Aluno
 WHERE nome LIKE '%o%'; -- a clásula WHERE indica quais linhas serão excluídas.
+
+SELECT *
+FROM Turma;
+
+SELECT *
+FROM Aluno;
+
+DELETE FROM Turma
+WHERE id_turma = 1; 
 
 SELECT *
 FROM Turma;
