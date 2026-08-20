@@ -9,13 +9,13 @@ Você foi contratado para modelar o banco de dados de uma escola. O sistema prec
     3. Liste os nomes de todos os alunos com suas turmas e séries.
     4. Liste todas as aulas com nomes de professores, sigla da turma, disciplina, dia e hora.
 
-    **Escolha uma turma e faça os itens 5, 6 e 7 a seguir:**
+    Escolha uma turma para realizar os itens 5, 6 e 7 a seguir:
 
     5. Liste todos os alunos da turma escolhida, exibindo nome do aluno, matrícula e a turma.
     6. Transfira um aluno de outra turma para a turma escolhida e liste novamente os alunos da turma escolhida.
     7. Exclua um aluno da turma escolhida e liste novamente todos os alunos dessa turma.
 
-    **Escolha um aluno e faça os itens 8 e 9 a seguir:**
+    Escolha um aluno para realizar os itens 8 e 9 a seguir:
 
     8. Exiba todas as as informações desse aluno, incluindo sigla da turma, série e curso.
     9. Mude o telefone e a média desse aluno e exiba novamente todas as suas informações.
