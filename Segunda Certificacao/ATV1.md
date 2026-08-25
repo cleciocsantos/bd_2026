@@ -17,8 +17,14 @@ Você foi contratado para modelar o banco de dados de uma escola. O sistema prec
 
     Escolha um aluno para realizar os itens 8 e 9 a seguir:
 
-    8. Exiba todas as as informações desse aluno, incluindo sigla da turma, série e curso.
-    9. Mude o telefone e a média desse aluno e exiba novamente todas as suas informações.
+    8. Exiba todas as as informações pessoais desse aluno, incluindo sigla da turma, série e curso.
+    9. Mude o telefone e a média desse aluno e exiba novamente todas as suas informações.<br><br>
     10. Liste todas as aulas de um determinado professor, exibindo nome do professor, sigla da turma, dia e hora.
+    11. Listar os nomes de todas as turmas e a quantidade de alunos que tem nelas.
+    12. Listar apenas as turmas com mais de cinco alunos.
+
+    Desafio extra:
+    
+    13. Listar todos os professores de uma que dão aula para uma determinada turma, exibindo nome do professor e disciplina, sem repetir o mesmo professor que dá mais de uma aula.
     
 **Atenção:** ao final da atividade, os arquivos esquema_escola.png e escola.sql devem ser compactados e enviados por e-mail ao professor. No assunto do e-mail, colocar BD - 2C - ATV 1. No corpo do e-mail, escrever os nomes do grupo que fez a atividade.
