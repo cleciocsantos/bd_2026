@@ -6,7 +6,7 @@ Você foi contratado para modelar o banco de dados de uma escola. O sistema prec
 - Realize as seguintes consultas:
     1. Liste todos os professores.
     2. Liste todas as turmas.
-    3. Liste os nomes de todos os alunos com suas turmas e séries.
+    3. Liste os nomes de todos os alunos com as siglas das turmas e séries.
     4. Liste todas as aulas com nomes de professores, sigla da turma, disciplina, dia e hora.
 
     Escolha uma turma para realizar os itens 5, 6 e 7 a seguir:
@@ -25,6 +25,6 @@ Você foi contratado para modelar o banco de dados de uma escola. O sistema prec
 
     Desafio extra:
     
-    13. Listar todos os professores de uma que dão aula para uma determinada turma, exibindo nome do professor e disciplina, sem repetir o mesmo professor que dá mais de uma aula.
+    13. Listar todos os professores que dão aula para uma determinada turma, exibindo nome do professor e disciplina, sem repetir o mesmo professor que dá mais de uma aula.
     
 **Atenção:** ao final da atividade, os arquivos esquema_escola.png e escola.sql devem ser compactados e enviados por e-mail ao professor. No assunto do e-mail, colocar BD - 2C - ATV 1. No corpo do e-mail, escrever os nomes do grupo que fez a atividade.
