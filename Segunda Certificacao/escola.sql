@@ -7,9 +7,9 @@ DROP TABLE IF EXISTS Aluno;
 CREATE TABLE Aluno (
     id_aluno INTEGER PRIMARY KEY AUTOINCREMENT,
     nome TEXT NOT NULL,
-    telefone TEXT,
-    media REAL,
     cpf TEXT NOT NULL UNIQUE,
+    media REAL,
+    telefone TEXT,
     id_turma INTEGER NOT NULL,
     /* A linha abaixo indica que a coluna id_turma desta tabela é uma 
        chave estrangeira para a coluna id_turma da tabela Turma */
@@ -32,6 +32,9 @@ CREATE TABLE Turma (
 /* O comando INSERT INTO pode ser usado para inserir uma ou mais linhas de uma só vez na tabela */
 INSERT INTO Turma (sigla, curso, serie)
 VALUES ('DS202', 'integrado', 2),
+('DS102', 'integrado', 1),
+('DS302', 'integrado', 3),
+('1201', 'regular', 2),
 ('1301', 'regular', 3);
 
 /* Ao inserir um aluno, precisamos informar um id_turma que exista na tabela Turma */
@@ -43,6 +46,8 @@ VALUES ('Manu','(21) 99999-9999', '111.111.111-12', 1),
         ('Alicia', '(21) 99999-9999', '111.111.111-13', 1),
         ('Igor', '(21) 99999-9999', '111.111.111-14', 2);
 
+SELECT * FROM Aluno;
+
 /* O comando UPDATE pode ser usado para alterar o valor de uma ou mais colunas em uma ou mais linhas */
 UPDATE Aluno 
 SET -- a clásula SET indica quais colunas terão os valores alterados.
@@ -50,21 +55,11 @@ SET -- a clásula SET indica quais colunas terão os valores alterados.
     nome = 'Alicia Outro'
 WHERE id_aluno = 3; -- a clásula WHERE indica em quais linhas o valor das colunas será alterado.
 
+select * FROM Aluno;
+
 /* O comando DELETE pode ser usado para excluir uma ou mais linhas de uma só vez na tabela */
 DELETE FROM Aluno
 WHERE nome LIKE '%o%'; -- a clásula WHERE indica quais linhas serão excluídas.
 
-SELECT *
-FROM Turma;
+select * FROM Aluno;
 
-SELECT *
-FROM Aluno;
-
-DELETE FROM Turma
-WHERE id_turma = 1; 
-
-SELECT *
-FROM Turma;
-
-SELECT *
-FROM Aluno;
