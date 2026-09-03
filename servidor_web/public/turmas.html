@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turmas</title>
+</head>
+<body>
+    <h1>Lista de turmas</h1>
+
+    <table id="tabela">
+        <thead>
+        <tr><th>Sigla</th><th>Curso</th><th>Série</th></tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+  <script>
+    async function carregarTurmas() {
+      const res = await fetch(`/api/turmas`);
+      const turmas = await res.json();
+      const tbody = document.querySelector("#tabela tbody");
+      tbody.innerHTML = "";
+
+      turmas.forEach(t => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+        <td>${t.sigla}</td>
+        <td>${t.curso}</td>
+        <td>${t.serie}</td>`;
+        tbody.appendChild(row);
+      });
+    }
+
+    carregarTurmas();
+  </script>
+</body>
+</html>
