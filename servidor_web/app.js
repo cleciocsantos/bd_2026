@@ -5,20 +5,9 @@ const app = express();
 const port = 8080;
 
 // Middleware
-// app.use(express.urlencoded({ extended: false }));
-// app.use(express.json());
-// app.use(express.static(path.join(__dirname, "public")));
-
-app.get('/', (req, res) => {
-  res.send(`
-    <h1>Leitura de parâmetros na URL</h1>
-    <p> Experimente escrever ao final da URL:</p>
-    <ul>
-        <li>/users/<strong>:userId</strong> => substituindo <strong>:userId</strong> por um número</li>
-        <li>/users/<strong>:userId</strong>/posts/<strong>:postId</strong> => substituindo <strong>:userId</strong> e <strong>:postId</strong> por números</li>
-    </ul>
-    `);
-});
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+app.use(express.static(path.join(__dirname, "public")));
 
 // Rota com um parâmetro na URL
 app.get('/users/:userId', (req, res) => {
