@@ -1,4 +1,5 @@
 const express = require('express');
+const sqlite3 = require("sqlite3").verbose();
 const path = require("path");
 
 const app = express();
@@ -8,6 +9,9 @@ const port = 8080;
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
+
+// Conexão com o banco de dados
+const db = new sqlite3.Database("./escola.db");
 
 // Rota com um parâmetro na URL
 app.get('/users/:userId', (req, res) => {
@@ -24,21 +28,21 @@ app.get('/users/:userId/posts/:postId', (req, res) => {
 });
 
 // Rota para listar turmas (com filtro opcional por sigla)
-// app.get("/api/turmas", (req, res) => {
-//   let sql = `
-//     [CONSULTA SQL PARA LISTAR TODAS AS TURMAS AQUI]
-//   ` ;
-//   db.all(
-//     sql,
-//     (err, rows) => {
-//       if (err) {
-//         console.log(err);
-//         return res.status(500).json({ error: "Erro ao consultar turmas" });
-//       }
-//       res.json(rows);
-//     }
-//   );
-// });
+app.get("/api/turmas", (req, res) => {
+  let sql = `
+    SELECT * FROM Turma;
+  ` ;
+  db.all(
+    sql,
+    (err, rows) => {
+      if (err) {
+        console.log(err);
+        return res.status(500).json({ error: "Erro ao consultar turmas" });
+      }
+      res.json(rows);
+    }
+  );
+});
 
 
 app.listen(port, () => {
