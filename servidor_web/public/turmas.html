@@ -9,10 +9,16 @@
       table { width: 100%; border-collapse: collapse; }
       th, td { padding: 8px; border: 1px solid #ccc; text-align: left; }
       th { background-color: #eee; }
+      .filtro {margin-bottom: 20px; }
     </style>
 </head>
 <body>
     <h1>Lista de turmas</h1>
+
+    <div class="filtro">
+      <label for="pesquisa">Pesquisar por turma:</label>
+      <input type="text" id="pesquisa" placeholder="Digite uma turma">
+    </div>
 
     <table id="tabela">
         <thead>
@@ -22,8 +28,8 @@
     </table>
 
   <script>
-    async function carregarTurmas() {
-      const res = await fetch(`/api/turmas`);
+    async function carregarTurmas(filtro = "") {
+      const res = await fetch(`/api/turmas?sigla=${encodeURIComponent(filtro)}`);
       const turmas = await res.json();
       const tbody = document.querySelector("#tabela tbody");
       tbody.innerHTML = "";
@@ -37,6 +43,10 @@
         tbody.appendChild(row);
       });
     }
+
+    document.querySelector("#pesquisa").addEventListener("input", (e) => {
+      carregarTurmas(e.target.value);
+    });
 
     carregarTurmas();
   </script>

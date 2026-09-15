@@ -1,6 +1,6 @@
 const express = require('express');
-const sqlite3 = require("sqlite3").verbose();
 const path = require("path");
+const sqlite3 = require("sqlite3").verbose();
 
 const app = express();
 const port = 8080;
@@ -27,10 +27,16 @@ app.get('/users/:userId/posts/:postId', (req, res) => {
   `);
 });
 
+// Rota com um parâmetro na consulta
+app.get('/users', (req, res) => {
+  res.send(`Procurando o usuário de nome: ${req.query.nome}`);
+});
+
 // Rota para listar turmas (com filtro opcional por sigla)
 app.get("/api/turmas", (req, res) => {
+  const sigla = req.query.sigla ? `%${req.query.sigla}%` : "%";
   let sql = `
-    SELECT * FROM Turma;
+    SELECT * FROM Turma WHERE sigla LIKE '${sigla}';
   ` ;
   db.all(
     sql,
@@ -48,3 +54,8 @@ app.get("/api/turmas", (req, res) => {
 app.listen(port, () => {
   console.log(`App de exemplo escutando em http://localhost:${port}`);
 });
+
+/* 
+Exemplo de SQL INJECTION: 
+X' UNION SELECT id_aluno, nome as sigla, matricula as curso, cpf as serie FROM Aluno;
+*/
