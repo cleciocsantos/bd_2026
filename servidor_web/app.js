@@ -50,6 +50,24 @@ app.get("/api/turmas", (req, res) => {
   );
 });
 
+// Rota para cadastrar turma
+app.post("/api/turma", (req, res) => {
+  const { sigla, curso, serie } = req.body;
+  if (!sigla || !curso || !serie) {
+    return res.status(400).json({ error: "Sigla, curso e série são obrigatórios" });
+  }
+
+  const stmt = db.prepare("[COMANDO SQL PARA INSERIR A TURMA]");
+  stmt.run(sigla, curso, serie, function (err) {
+    if (err) {
+      console.log(err);
+      return res.status(500).json({ error: "Erro ao inserir turma" });
+    }
+    res.json({ id: this.lastID, sigla, curso, serie});
+  });
+  stmt.finalize();
+});
+
 
 app.listen(port, () => {
   console.log(`App de exemplo escutando em http://localhost:${port}`);
