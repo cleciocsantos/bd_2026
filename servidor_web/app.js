@@ -57,7 +57,7 @@ app.post("/api/turma", (req, res) => {
     return res.status(400).json({ error: "Sigla, curso e série são obrigatórios" });
   }
 
-  const stmt = db.prepare("[COMANDO SQL PARA INSERIR A TURMA]");
+  const stmt = db.prepare("INSERT INTO Turma (sigla, curso, serie) VALUES (?,?,?)");
   stmt.run(sigla, curso, serie, function (err) {
     if (err) {
       console.log(err);
