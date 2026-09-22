@@ -68,6 +68,16 @@ app.post("/api/turma", (req, res) => {
   stmt.finalize();
 });
 
+// app.delete("[ROTA PARA DELETAR TURMA]", (req, res) => {
+//     const { id } = req.params;
+//     db.run("[SQL PARA DELETAR TURMA]", [id], function (err) {
+//     if (err) {
+//       return res.status(500).json({ error: "Erro ao deletar turma" });
+//     }
+//     res.json({ deleted: this.changes > 0 });
+//     });
+// })
+
 
 app.listen(port, () => {
   console.log(`App de exemplo escutando em http://localhost:${port}`);
