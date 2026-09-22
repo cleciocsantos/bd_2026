@@ -19,7 +19,10 @@
       <label for="sigla">Sigla</label>
       <input type="text" id="sigla" required>
       <label for="curso">Curso</label>
-      <input type="text" id="curso" required>
+      <select name="curso" id="curso">
+        <option value="integrado">Integrado</option>
+        <option value="regular">Regular</option>
+      </select>
       <label for="serie">Série</label>
       <input type="text" id="serie" required>
       <button type="submit">Cadastrar</button>
@@ -32,7 +35,12 @@
 
     <table id="tabela">
         <thead>
-        <tr><th>Sigla</th><th>Curso</th><th>Série</th></tr>
+        <tr>
+          <th>Sigla</th>
+          <th>Curso</th>
+          <th>Série</th>
+          <th>Opções</th>
+        </tr>
         </thead>
         <tbody></tbody>
     </table>
@@ -49,7 +57,11 @@
         row.innerHTML = `
         <td>${t.sigla}</td>
         <td>${t.curso}</td>
-        <td>${t.serie}</td>`;
+        <td>${t.serie}</td>
+        <td>
+          <button onclick="excluirTurma(${t.id_turma})">Excluir</button>
+        </td>
+        `;
         tbody.appendChild(row);
       });
     }
@@ -76,11 +88,11 @@
       carregarTurmas();
     });
 
-    // async function excluirTurma(id) {
-    //     if(!confirm("Tem certea que deseja excluir esta turma?")) return;
-    //     await fetch(`/api/turmas/${id}`, {method: "DELETE"});
-    //     carregarTurmas();
-    // }
+    async function excluirTurma(id) {
+        if(!confirm("Tem certeza que deseja excluir esta turma?")) return;
+        await fetch(`/api/turmas/${id}`, {method: "DELETE"});
+        carregarTurmas();
+    }
   </script>
 </body>
 </html>

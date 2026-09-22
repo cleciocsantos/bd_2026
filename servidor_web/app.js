@@ -36,10 +36,11 @@ app.get('/users', (req, res) => {
 app.get("/api/turmas", (req, res) => {
   const sigla = req.query.sigla ? `%${req.query.sigla}%` : "%";
   let sql = `
-    SELECT * FROM Turma WHERE sigla LIKE '${sigla}';
+    SELECT * FROM Turma WHERE sigla LIKE ?;
   ` ;
   db.all(
     sql,
+    [sigla],
     (err, rows) => {
       if (err) {
         console.log(err);
@@ -68,15 +69,16 @@ app.post("/api/turma", (req, res) => {
   stmt.finalize();
 });
 
-// app.delete("[ROTA PARA DELETAR TURMA]", (req, res) => {
-//     const { id } = req.params;
-//     db.run("[SQL PARA DELETAR TURMA]", [id], function (err) {
-//     if (err) {
-//       return res.status(500).json({ error: "Erro ao deletar turma" });
-//     }
-//     res.json({ deleted: this.changes > 0 });
-//     });
-// })
+app.delete("/api/turmas/:id", (req, res) => {
+    const { id } = req.params;
+    db.run("DELETE FROM Turma WHERE id_turma = ?", [id], function (err) {
+    if (err) {
+      console.log(err);
+      return res.status(500).json({ error: "Erro ao deletar turma" });
+    }
+    res.json({ deleted: this.changes > 0 });
+    });
+})
 
 
 app.listen(port, () => {
