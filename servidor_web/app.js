@@ -78,7 +78,18 @@ app.delete("/api/turmas/:id", (req, res) => {
     }
     res.json({ deleted: this.changes > 0 });
     });
-})
+});
+
+app.put("/api/turmas/:id", (req, res) => {
+    const { id } = req.params;
+    const {sigla, curso, serie} = req.body;
+    db.run("[INSIRA AQUI O COMANDO SQL PARA ATUALIZAR UMA TURMA]", [sigla, curso, serie, id], function (err) {
+    if (err) {
+      return res.status(500).json({ error: "Erro ao atualizar turma" });
+    }
+    res.json({ updated: this.changes > 0 });
+    });
+});
 
 
 app.listen(port, () => {
