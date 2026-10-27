@@ -83,7 +83,7 @@ app.delete("/api/turmas/:id", (req, res) => {
 app.put("/api/turmas/:id", (req, res) => {
     const { id } = req.params;
     const {sigla, curso, serie} = req.body;
-    db.run("[INSIRA AQUI O COMANDO SQL PARA ATUALIZAR UMA TURMA]", [sigla, curso, serie, id], function (err) {
+    db.run("UPDATE Turma SET sigla = ?, curso = ?, serie = ? WHERE id_turma = ?", [sigla, curso, serie, id], function (err) {
     if (err) {
       return res.status(500).json({ error: "Erro ao atualizar turma" });
     }
